@@ -1,0 +1,55 @@
+plugin:
+  id: "lysoip-reproducibility"
+  name: "Lyso-IP Reproducibility"
+  description: "Per-protein replicate consistency score within the IP and WCL groups for lyso-IP data"
+  version: "1.0.0"
+  author: "CauldronGO Team"
+  category: "lysoip-qc"
+  icon: "repeat"
+  repository: "https://github.com/noatgnu/lysoip-reproducibility-plugin"
+
+runtime:
+  environments: ["python"]
+  entrypoint: "lysoip_reproducibility.py"
+
+diagram:
+  enabled: true
+
+inputs:
+  - name: "abundance_long_file"
+    label: "Protein Abundance (Long Format)"
+    type: "file"
+    required: true
+    accept: ".tsv,.txt"
+    description: "abundance_long.tsv from the Lyso-IP Ingestion plugin"
+
+  - name: "samples_file"
+    label: "Samples"
+    type: "file"
+    required: true
+    accept: ".tsv,.txt"
+    description: "samples.tsv from the Lyso-IP Ingestion plugin"
+
+outputs:
+  - name: "reproducibility"
+    path: "reproducibility.tsv"
+    type: "data"
+    description: "Per-protein reproducibility score (average of IP and WCL replicate consistency, 1/(1+CV))"
+    format: "tsv"
+
+execution:
+  argsMapping:
+    abundance_long_file: "--abundance_long_file"
+    samples_file: "--samples_file"
+
+  outputDir: "--output_folder"
+
+  requirements:
+    python: ">=3.11"
+    packages: []
+
+example:
+  enabled: true
+  values:
+    abundance_long_file: "examples/abundance_long.tsv"
+    samples_file: "examples/samples.tsv"
