@@ -77,8 +77,8 @@ samples.tsv from the Lyso-IP Ingestion plugin
 This plugin includes example data for testing:
 
 ```yaml
-  samples_file: examples/samples.tsv
   abundance_long_file: examples/abundance_long.tsv
+  samples_file: examples/samples.tsv
 ```
 
 Load example data by clicking the **Load Example** button in the UI.

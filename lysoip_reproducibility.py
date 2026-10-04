@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""Lyso-IP QC reproducibility scorer: replicate consistency within each group.
-
-Ported from lysoip_qc_framework/apps/scoring/scorers/reproducibility.py.
-"""
+"""Per-protein replicate consistency within each group."""
 
 import argparse
 import csv
